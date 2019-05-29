@@ -1,0 +1,12 @@
+/Users/scottlewis/dksl/git/seata-demo/product-service/src/main/java/com/dk/product/worker/transaction/entity/Transaction.java
+/Users/scottlewis/dksl/git/seata-demo/product-service/src/main/java/com/dk/product/worker/StandResponseBuilder.java
+/Users/scottlewis/dksl/git/seata-demo/product-service/src/main/java/com/dk/product/worker/Startup.java
+/Users/scottlewis/dksl/git/seata-demo/product-service/src/main/java/com/dk/product/worker/product/dao/InventoryMapper.java
+/Users/scottlewis/dksl/git/seata-demo/product-service/src/main/java/com/dk/product/worker/product/controller/ProductController.java
+/Users/scottlewis/dksl/git/seata-demo/product-service/src/main/java/com/dk/product/worker/product/dao/ProductMapper.java
+/Users/scottlewis/dksl/git/seata-demo/product-service/src/main/java/com/dk/product/worker/product/service/ProductService.java
+/Users/scottlewis/dksl/git/seata-demo/product-service/src/main/java/com/dk/product/worker/product/req/AllocateInventoryReq.java
+/Users/scottlewis/dksl/git/seata-demo/product-service/src/main/java/com/dk/product/worker/transaction/dao/TransactionMapper.java
+/Users/scottlewis/dksl/git/seata-demo/product-service/src/main/java/com/dk/product/worker/product/entity/Product.java
+/Users/scottlewis/dksl/git/seata-demo/product-service/src/main/java/com/dk/product/worker/BaseController.java
+/Users/scottlewis/dksl/git/seata-demo/product-service/src/main/java/com/dk/product/worker/product/entity/Inventory.java

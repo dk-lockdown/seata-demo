@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dk.order.worker.order.dao.SoItemMapper">
+
+    <resultMap id="BaseResultMap" type="com.dk.order.worker.order.entity.SoItem" >
+        <result column="sysno" property="sysNo" />
+        <result column="so_sysno" property="soSysNo" />
+        <result column="product_sysno" property="productSysNo" />
+        <result column="product_name" property="productName" />
+        <result column="cost_price" property="costPrice" />
+        <result column="original_price" property="originalPrice" />
+        <result column="deal_price" property="dealPrice" />
+        <result column="quantity" property="quantity" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                sysno,
+                so_sysno,
+                product_sysno,
+                product_name,
+                cost_price,
+                original_price,
+                deal_price,
+                quantity,
+                weight
+    </sql>
+
+    <insert id="insert" parameterType="com.dk.order.worker.order.entity.SoItem">
+        INSERT INTO so_item
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test ='null != sysNo'>
+                sysno,
+            </if>
+            <if test ='null != soSysNo'>
+                so_sysno,
+            </if>
+            <if test ='null != productSysNo'>
+                product_sysno,
+            </if>
+            <if test ='null != productName'>
+                product_name,
+            </if>
+            <if test ='null != costPrice'>
+                cost_price,
+            </if>
+            <if test ='null != originalPrice'>
+                original_price,
+            </if>
+            <if test ='null != dealPrice'>
+                deal_price,
+            </if>
+            <if test ='null != quantity'>
+                quantity,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test ='null != sysNo'>
+                #{sysNo},
+            </if>
+            <if test ='null != soSysNo'>
+                #{soSysNo},
+            </if>
+            <if test ='null != productSysNo'>
+                #{productSysNo},
+            </if>
+            <if test ='null != productName'>
+                #{productName},
+            </if>
+            <if test ='null != costPrice'>
+                #{costPrice},
+            </if>
+            <if test ='null != originalPrice'>
+                #{originalPrice},
+            </if>
+            <if test ='null != dealPrice'>
+                #{dealPrice},
+            </if>
+            <if test ='null != quantity'>
+                #{quantity},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delete" >
+        DELETE FROM so_item
+        WHERE sysno = #{sysno}
+    </delete>
+
+
+    <select id="load" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM so_item
+        WHERE sysno = #{sysno}
+    </select>
+
+    <select id="pageList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM so_item
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="pageListCount" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM so_item
+    </select>
+
+</mapper>

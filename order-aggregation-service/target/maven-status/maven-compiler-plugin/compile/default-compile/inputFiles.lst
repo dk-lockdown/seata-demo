@@ -1,0 +1,16 @@
+/Users/scottlewis/dksl/git/seata-test/seata-demo/order-aggregation-service/src/main/java/com/jwell/order/aggregation/worker/order/action/CreateOrderTccAction.java
+/Users/scottlewis/dksl/git/seata-test/seata-demo/order-aggregation-service/src/main/java/com/jwell/order/aggregation/worker/order/req/CreateOrderReq.java
+/Users/scottlewis/dksl/git/seata-test/seata-demo/order-aggregation-service/src/main/java/com/jwell/order/aggregation/worker/order/remote/order/entity/SoMaster.java
+/Users/scottlewis/dksl/git/seata-test/seata-demo/order-aggregation-service/src/main/java/com/jwell/order/aggregation/worker/order/remote/product/ProductSvc.java
+/Users/scottlewis/dksl/git/seata-test/seata-demo/order-aggregation-service/src/main/java/com/jwell/order/aggregation/worker/order/remote/product/entity/Product.java
+/Users/scottlewis/dksl/git/seata-test/seata-demo/order-aggregation-service/src/main/java/com/jwell/order/aggregation/worker/Startup.java
+/Users/scottlewis/dksl/git/seata-test/seata-demo/order-aggregation-service/src/main/java/com/jwell/order/aggregation/worker/order/service/OrderService.java
+/Users/scottlewis/dksl/git/seata-test/seata-demo/order-aggregation-service/src/main/java/com/jwell/order/aggregation/worker/order/controller/OrderController.java
+/Users/scottlewis/dksl/git/seata-test/seata-demo/order-aggregation-service/src/main/java/com/jwell/order/aggregation/worker/order/action/AllocateInventoryTccAction.java
+/Users/scottlewis/dksl/git/seata-test/seata-demo/order-aggregation-service/src/main/java/com/jwell/order/aggregation/worker/order/action/impl/CreateOrderTccActionImpl.java
+/Users/scottlewis/dksl/git/seata-test/seata-demo/order-aggregation-service/src/main/java/com/jwell/order/aggregation/worker/order/remote/product/req/AllocateInventoryReq.java
+/Users/scottlewis/dksl/git/seata-test/seata-demo/order-aggregation-service/src/main/java/com/jwell/order/aggregation/worker/order/remote/order/OrderSvc.java
+/Users/scottlewis/dksl/git/seata-test/seata-demo/order-aggregation-service/src/main/java/com/jwell/order/aggregation/worker/BaseController.java
+/Users/scottlewis/dksl/git/seata-test/seata-demo/order-aggregation-service/src/main/java/com/jwell/order/aggregation/worker/StandResponseBuilder.java
+/Users/scottlewis/dksl/git/seata-test/seata-demo/order-aggregation-service/src/main/java/com/jwell/order/aggregation/worker/order/remote/order/entity/SoItem.java
+/Users/scottlewis/dksl/git/seata-test/seata-demo/order-aggregation-service/src/main/java/com/jwell/order/aggregation/worker/order/action/impl/AllocateInventoryTccActionImpl.java

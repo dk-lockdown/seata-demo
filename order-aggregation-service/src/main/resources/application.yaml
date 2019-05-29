@@ -1,0 +1,25 @@
+server:
+  port: 3003
+  servlet:
+    context-path: /aggregation
+
+spring:
+  application:
+    name: aggregation-service
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  application:
+    swagger:
+      host:
+
+product:
+  svc:
+    host: http://localhost:3001
+order:
+  svc:
+    host: http://localhost:3002
+

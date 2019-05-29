@@ -1,0 +1,12 @@
+com/dk/product/worker/transaction/entity/Transaction.class
+com/dk/product/worker/product/controller/ProductController.class
+com/dk/product/worker/Startup.class
+com/dk/product/worker/transaction/dao/TransactionMapper.class
+com/dk/product/worker/product/dao/InventoryMapper.class
+com/dk/product/worker/product/service/ProductService.class
+com/dk/product/worker/product/entity/Inventory.class
+com/dk/product/worker/StandResponseBuilder.class
+com/dk/product/worker/BaseController.class
+com/dk/product/worker/product/req/AllocateInventoryReq.class
+com/dk/product/worker/product/dao/ProductMapper.class
+com/dk/product/worker/product/entity/Product.class

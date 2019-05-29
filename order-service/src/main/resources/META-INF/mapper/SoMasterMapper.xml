@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dk.order.worker.order.dao.SoMasterMapper">
+
+    <resultMap id="BaseResultMap" type="com.dk.order.worker.order.entity.SoMaster" >
+        <result column="sysno" property="sysNo" />
+        <result column="so_id" property="soId" />
+        <result column="buyer_user_sysno" property="buyerUserSysNo" />
+        <result column="seller_company_code" property="sellerCompanyCode" />
+        <result column="receive_division_sysno" property="receiveDivisionSysNo" />
+        <result column="receive_address" property="receiveAddress" />
+        <result column="receive_zip" property="receiveZip" />
+        <result column="receive_contact" property="receiveContact" />
+        <result column="receive_contact_phone" property="receiveContactPhone" />
+        <result column="stock_sysno" property="stockSysNo" />
+        <result column="payment_type" property="paymentType" />
+        <result column="so_amt" property="soAmt" />
+        <result column="status" property="status" />
+        <result column="order_date" property="orderDate" />
+        <result column="paymemt_date" property="paymemtDate" />
+        <result column="delivery_date" property="deliveryDate" />
+        <result column="receive_date" property="receiveDate" />
+        <result column="appid" property="appid" />
+        <result column="memo" property="memo" />
+        <result column="create_user" property="createUser" />
+        <result column="gmt_create" property="gmtCreate" />
+        <result column="modify_user" property="modifyUser" />
+        <result column="gmt_modified" property="gmtModified" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                sysno,
+                so_id,
+                buyer_user_sysno,
+                seller_company_code,
+                receive_division_sysno,
+                receive_address,
+                receive_zip,
+                receive_contact,
+                receive_contact_phone,
+                stock_sysno,
+                payment_type,
+                so_amt,
+                status,
+                order_date,
+                paymemt_date,
+                delivery_date,
+                receive_date,
+                appid,
+                memo,
+                create_user,
+                gmt_create,
+                modify_user,
+                gmt_modified
+    </sql>
+
+    <insert id="insert" parameterType="com.dk.order.worker.order.entity.SoMaster">
+        INSERT INTO so_master
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test ='null != sysNo'>
+                sysno,
+            </if>
+            <if test ='null != soId'>
+                so_id,
+            </if>
+            <if test ='null != buyerUserSysNo'>
+                buyer_user_sysno,
+            </if>
+            <if test ='null != sellerCompanyCode'>
+                seller_company_code,
+            </if>
+            <if test ='null != receiveDivisionSysNo'>
+                receive_division_sysno,
+            </if>
+            <if test ='null != receiveAddress'>
+                receive_address,
+            </if>
+            <if test ='null != receiveZip'>
+                receive_zip,
+            </if>
+            <if test ='null != receiveContact'>
+                receive_contact,
+            </if>
+            <if test ='null != receiveContactPhone'>
+                receive_contact_phone,
+            </if>
+            <if test ='null != stockSysNo'>
+                stock_sysno,
+            </if>
+            <if test ='null != paymentType'>
+                payment_type,
+            </if>
+            <if test ='null != soAmt'>
+                so_amt,
+            </if>
+            <if test ='true'>
+                status,
+            </if>
+            <if test ='null != orderDate'>
+                order_date,
+            </if>
+            <if test ='null != paymemtDate'>
+                paymemt_date,
+            </if>
+            <if test ='null != deliveryDate'>
+                delivery_date,
+            </if>
+            <if test ='null != receiveDate'>
+                receive_date,
+            </if>
+            <if test ='null != appid'>
+                appid,
+            </if>
+            <if test ='null != memo'>
+                memo,
+            </if>
+            <if test ='null != createUser'>
+                create_user,
+            </if>
+            <if test ='null != gmtCreate'>
+                gmt_create,
+            </if>
+            <if test ='null != modifyUser'>
+                modify_user,
+            </if>
+            <if test ='null != gmtModified'>
+                gmt_modified
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test ='null != sysNo'>
+                #{sysNo},
+            </if>
+            <if test ='null != soId'>
+                #{soId},
+            </if>
+            <if test ='null != buyerUserSysNo'>
+                #{buyerUserSysNo},
+            </if>
+            <if test ='null != sellerCompanyCode'>
+                #{sellerCompanyCode},
+            </if>
+            <if test ='null != receiveDivisionSysNo'>
+                #{receiveDivisionSysNo},
+            </if>
+            <if test ='null != receiveAddress'>
+                #{receiveAddress},
+            </if>
+            <if test ='null != receiveZip'>
+                #{receiveZip},
+            </if>
+            <if test ='null != receiveContact'>
+                #{receiveContact},
+            </if>
+            <if test ='null != receiveContactPhone'>
+                #{receiveContactPhone},
+            </if>
+            <if test ='null != stockSysNo'>
+                #{stockSysNo},
+            </if>
+            <if test ='null != paymentType'>
+                #{paymentType},
+            </if>
+            <if test ='null != soAmt'>
+                #{soAmt},
+            </if>
+            <if test ='true'>
+                0,
+            </if>
+            <if test ='null != orderDate'>
+                #{orderDate},
+            </if>
+            <if test ='null != paymemtDate'>
+                #{paymemtDate},
+            </if>
+            <if test ='null != deliveryDate'>
+                #{deliveryDate},
+            </if>
+            <if test ='null != receiveDate'>
+                #{receiveDate},
+            </if>
+            <if test ='null != appid'>
+                #{appid},
+            </if>
+            <if test ='null != memo'>
+                #{memo},
+            </if>
+            <if test ='null != createUser'>
+                #{createUser},
+            </if>
+            <if test ='null != gmtCreate'>
+                #{gmtCreate},
+            </if>
+            <if test ='null != modifyUser'>
+                #{modifyUser},
+            </if>
+            <if test ='null != gmtModified'>
+                #{gmtModified}
+            </if>
+        </trim>
+    </insert>
+    
+    <update id="updateSoStatusToCreateSuccess">
+        update so_master
+        set status = 10
+        where sysno = #{sysno} and status = 0;
+    </update>
+
+    <update id="updateSoStatusToCreateFail">
+        update so_master
+        set status = 90
+        where sysno = #{sysno} and status = 0;
+    </update>
+
+    <delete id="delete" >
+        DELETE FROM so_master
+        WHERE sysno = #{sysno}
+    </delete>
+
+
+    <select id="load" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM so_master
+        WHERE sysno = #{sysno}
+    </select>
+
+    <select id="pageList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM so_master
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="pageListCount" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM so_master
+    </select>
+
+</mapper>

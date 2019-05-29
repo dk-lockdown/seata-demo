@@ -1,0 +1,63 @@
+server:
+  port: 3001
+  servlet:
+    context-path: /product
+
+spring:
+  application:
+    name: product-service
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  application:
+    swagger:
+      host:
+
+data-source:
+  useMasterSlave: true
+mybatis:
+  mapper-locations: classpath:META-INF/mapper/*Mapper.xml
+  config-location: classpath:mybatis-config.xml
+  executorType: SIMPLE
+sharding:
+  jdbc:
+    datasource:
+      names: master,slave0
+      master:
+        type: org.apache.commons.dbcp.BasicDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/seata_product?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&serverTimezone=Hongkong
+        username: root
+        password: 123456
+        validationQuery: select 1
+        testOnBorrow: true
+      slave0:
+        type: org.apache.commons.dbcp.BasicDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/seata_product?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&serverTimezone=Hongkong
+        username: root
+        password: 123456
+        validationQuery: select 1
+        testOnBorrow: true
+    config:
+      masterslave:
+        name: ms
+        master-data-source-name: master
+        slave-data-source-names: slave0
+        props:
+          sql:
+            show: true
+
+---
+spring:
+  profiles: prd
+
+data-source:
+  useMasterSlave: true
+mybatis:
+  mapper-locations: classpath:META-INF/mapper/*Mapper.xml
+  config-location: classpath:mybatis-config.xml
+  executorType: SIMPLE

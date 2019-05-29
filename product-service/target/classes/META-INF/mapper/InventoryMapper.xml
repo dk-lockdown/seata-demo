@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dk.product.worker.product.dao.InventoryMapper">
+
+    <resultMap id="BaseResultMap" type="com.dk.product.worker.product.entity.Inventory" >
+        <result column="sysno" property="sysno" />
+        <result column="product_sysno" property="productSysNo" />
+        <result column="account_qty" property="accountQty" />
+        <result column="available_qty" property="availableQty" />
+        <result column="allocated_qty" property="allocatedQty" />
+        <result column="adjust_locked_qty" property="adjustLockedQty" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                sysno,
+                product_sysno,
+                account_qty,
+                available_qty,
+                allocated_qty,
+                adjust_locked_qty
+    </sql>
+
+    <insert id="insert" parameterType="com.dk.product.worker.product.entity.Inventory">
+        INSERT INTO inventory
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test ='null != sysNo'>
+                sysno,
+            </if>
+            <if test ='null != productSysNo'>
+                product_sysno,
+            </if>
+            <if test ='null != accountQty'>
+                account_qty,
+            </if>
+            <if test ='null != availableQty'>
+                available_qty,
+            </if>
+            <if test ='null != allocatedQty'>
+                allocated_qty,
+            </if>
+            <if test ='null != adjustLockedQty'>
+                adjust_locked_qty
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test ='null != sysNo'>
+                #{sysNo},
+            </if>
+            <if test ='null != productSysNo'>
+                #{productSysNo},
+            </if>
+            <if test ='null != accountQty'>
+                #{accountQty},
+            </if>
+            <if test ='null != availableQty'>
+                #{availableQty},
+            </if>
+            <if test ='null != allocatedQty'>
+                #{allocatedQty},
+            </if>
+            <if test ='null != adjustLockedQty'>
+                #{adjustLockedQty}
+            </if>
+        </trim>
+    </insert>
+
+    <update id="allocateInventory">
+        update inventory
+        set available_qty = available_qty - #{qty},
+        allocated_qty = allocated_qty + #{qty}
+        where product_sysno = #{productSysNo}
+        and available_qty >= #{qty}
+    </update>
+
+    <update id="cancelAllocateInventory">
+        update inventory
+        set available_qty = available_qty + #{qty},
+        allocated_qty = allocated_qty - #{qty}
+        where product_sysno = #{productSysNo}
+        and allocated_qty >= #{qty}
+    </update>
+
+    <delete id="delete" >
+        DELETE FROM inventory
+        WHERE sysno = #{sysno}
+    </delete>
+
+    <select id="load" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM inventory
+        WHERE sysno = #{sysno}
+    </select>
+
+    <select id="pageList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM inventory
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="pageListCount" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM inventory
+    </select>
+
+</mapper>
