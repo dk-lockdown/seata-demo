@@ -21,12 +21,12 @@ public interface ProductSvc {
     @RequestMapping(value ="/v1/product/load",method = RequestMethod.GET)
     public StandResponse<Product> load(Long sysno);
 
-    @RequestMapping(value ="/v1/product/allocateInventory",method = RequestMethod.POST)
+    @RequestMapping(value ="/v1/product/allocateInventory",method = RequestMethod.POST, headers = {"Seata-Transaction-Mode=TCC"})
     public StandResponse allocateInventory(@RequestBody TccRequest<List<AllocateInventoryReq>> reqs);
 
-    @RequestMapping(value ="/v1/product/commitAllocateInventory",method = RequestMethod.POST)
+    @RequestMapping(value ="/v1/product/commitAllocateInventory",method = RequestMethod.POST, headers = {"Seata-Transaction-Mode=TCC"})
     public StandResponse commitAllocateInventory(@RequestBody TccRequest<List<AllocateInventoryReq>> reqs);
 
-    @RequestMapping(value ="/v1/product/cancelAllocateInventory",method = RequestMethod.POST)
+    @RequestMapping(value ="/v1/product/cancelAllocateInventory",method = RequestMethod.POST, headers = {"Seata-Transaction-Mode=TCC"})
     public StandResponse cancelAllocateInventory(@RequestBody TccRequest<List<AllocateInventoryReq>> reqs);
 }

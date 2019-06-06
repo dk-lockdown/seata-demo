@@ -17,12 +17,12 @@ public interface OrderSvc {
      * @author scott lewis
      * @date 2019/05/27
      **/
-    @RequestMapping(value = "/v1/So/insert",method = RequestMethod.POST)
+    @RequestMapping(value = "/v1/So/insert",method = RequestMethod.POST, headers = {"Seata-Transaction-Mode=TCC"})
     public StandResponse<List<Long>> insert(@RequestBody TccRequest<List<SoMaster>> soMasters);
 
-    @RequestMapping(value = "/v1/So/updateSoStatusToCreateSuccess",method = RequestMethod.POST)
+    @RequestMapping(value = "/v1/So/updateSoStatusToCreateSuccess",method = RequestMethod.POST, headers = {"Seata-Transaction-Mode=TCC"})
     public StandResponse updateSoStatusToCreateSuccess(@RequestBody TccRequest<List<Long>> sysnos);
 
-    @RequestMapping(value = "/v1/So/updateSoStatusToCreateFail",method = RequestMethod.POST)
+    @RequestMapping(value = "/v1/So/updateSoStatusToCreateFail",method = RequestMethod.POST, headers = {"Seata-Transaction-Mode=TCC"})
     public StandResponse updateSoStatusToCreateFail(@RequestBody TccRequest<List<Long>> sysnos);
 }
