@@ -29,4 +29,7 @@ public interface ProductSvc {
 
     @RequestMapping(value ="/v1/product/cancelAllocateInventory",method = RequestMethod.POST, headers = {"Seata-Transaction-Mode=TCC"})
     public StandResponse cancelAllocateInventory(@RequestBody TccRequest<List<AllocateInventoryReq>> reqs);
+
+    @RequestMapping(value ="/v1/product/allocateInventory2",method = RequestMethod.POST)
+    public StandResponse allocateInventory(@RequestBody List<AllocateInventoryReq> reqs);
 }

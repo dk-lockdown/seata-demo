@@ -45,4 +45,10 @@ public class SoController extends BaseController {
         soService.updateSoStatusToCreateFail(sysnos);
         return success();
     }
+
+    @RequestMapping(value = "/insert2",method = RequestMethod.POST)
+    public StandResponse<List<Long>> insert(@RequestBody List<SoMaster> soMasters) throws BusinessException {
+        List<Long> result = soService.createSo(soMasters);
+        return success(result);
+    }
 }

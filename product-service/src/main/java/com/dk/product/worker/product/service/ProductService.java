@@ -86,4 +86,14 @@ public class ProductService {
             inventoryMapper.cancelAllocateInventory(req.getProductSysNo(),req.getQty());
         }
     }
+
+    @Transactional(rollbackFor = Throwable.class)
+    public void allocateInventory(List<AllocateInventoryReq> reqs) throws BusinessException {
+        for (AllocateInventoryReq req : reqs) {
+            int result = inventoryMapper.allocateInventory(req.getProductSysNo(),req.getQty());
+            if(result<=0) {
+                throw new BusinessException("为订单分配库存失败");
+            }
+        }
+    }
 }

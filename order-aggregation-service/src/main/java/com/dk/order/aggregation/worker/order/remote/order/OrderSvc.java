@@ -25,4 +25,7 @@ public interface OrderSvc {
 
     @RequestMapping(value = "/v1/So/updateSoStatusToCreateFail",method = RequestMethod.POST, headers = {"Seata-Transaction-Mode=TCC"})
     public StandResponse updateSoStatusToCreateFail(@RequestBody TccRequest<List<Long>> sysnos);
+
+    @RequestMapping(value = "/v1/So/insert2",method = RequestMethod.POST)
+    public StandResponse<List<Long>> insert(@RequestBody List<SoMaster> soMasters);
 }

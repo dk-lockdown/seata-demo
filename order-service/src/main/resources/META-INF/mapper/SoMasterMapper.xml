@@ -94,7 +94,7 @@
             <if test ='null != soAmt'>
                 so_amt,
             </if>
-            <if test ='true'>
+            <if test ='null != status'>
                 status,
             </if>
             <if test ='null != orderDate'>
@@ -165,8 +165,8 @@
             <if test ='null != soAmt'>
                 #{soAmt},
             </if>
-            <if test ='true'>
-                0,
+            <if test ='null != status'>
+                #{status},
             </if>
             <if test ='null != orderDate'>
                 #{orderDate},

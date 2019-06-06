@@ -3,8 +3,10 @@ package com.dk.order.aggregation.worker.order.service;
 import com.alibaba.fastjson.JSON;
 import com.dk.order.aggregation.worker.order.action.AllocateInventoryTccAction;
 import com.dk.order.aggregation.worker.order.action.CreateOrderTccAction;
+import com.dk.order.aggregation.worker.order.remote.order.OrderSvc;
 import com.dk.order.aggregation.worker.order.remote.order.entity.SoItem;
 import com.dk.order.aggregation.worker.order.remote.order.entity.SoMaster;
+import com.dk.order.aggregation.worker.order.remote.product.ProductSvc;
 import com.dk.order.aggregation.worker.order.remote.product.req.AllocateInventoryReq;
 import com.dk.order.aggregation.worker.order.req.CreateOrderReq;
 import com.dk.foundation.common.SnowflakeIdGenerator;
@@ -13,6 +15,7 @@ import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,12 @@ public class OrderService {
     @Autowired
     AllocateInventoryTccAction allocateInventoryTccAction;
 
+    @Resource
+    OrderSvc orderSvc;
+
+    @Resource
+    ProductSvc productSvc;
+
     public List<Long> createSo(CreateOrderReq req) throws BusinessException {
         if(req.shoppingProducts==null||req.shoppingProducts.size()==0) {
             throw new BusinessException("购买的商品不能为空");
@@ -35,7 +44,7 @@ public class OrderService {
     }
 
     @GlobalTransactional
-    public List<Long> createSo() throws BusinessException {
+    public List<Long> createSo(boolean atMode) throws BusinessException {
 
         List<Long> soSysNos = new ArrayList<>();
         List<SoMaster> soMasters = new ArrayList<>();
@@ -83,12 +92,19 @@ public class OrderService {
         allocateInventoryReq.setQty(soItem.getQuantity());
         reqs.add(allocateInventoryReq);
 
-
-        boolean result1 = createOrderTccAction.prepare(null, soMasters, JSON.toJSONString(soSysNos));
-        boolean result2 = allocateInventoryTccAction.prepare(null,JSON.toJSONString(reqs));
-        if(result1&&result2) {
-            return soSysNos;
+        if(atMode) {
+            orderSvc.insert(soMasters);
+            productSvc.allocateInventory(reqs);
+        }
+        else {
+            boolean result1 = createOrderTccAction.prepare(null, soMasters, JSON.toJSONString(soSysNos));
+            boolean result2 = allocateInventoryTccAction.prepare(null, JSON.toJSONString(reqs));
+            if (result1 && result2) {
+                return soSysNos;
+            }
         }
         throw new BusinessException("下单失败");
     }
+
+
 }

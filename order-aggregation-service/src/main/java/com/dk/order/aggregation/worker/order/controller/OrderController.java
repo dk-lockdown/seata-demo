@@ -21,10 +21,17 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-    @ApiOperation(value = "下单")
+    @ApiOperation(value = "下单Tcc模式")
     @RequestMapping(value = "create", method = RequestMethod.GET)
     public @ResponseBody
     StandResponse<List<Long>> createSo() throws BusinessException {
-        return StandResponseBuilder.ok(orderService.createSo());
+        return StandResponseBuilder.ok(orderService.createSo(false));
+    }
+
+    @ApiOperation(value = "下单At模式")
+    @RequestMapping(value = "create2", method = RequestMethod.GET)
+    public @ResponseBody
+    StandResponse<List<Long>> createSo2() throws BusinessException {
+        return StandResponseBuilder.ok(orderService.createSo(true));
     }
 }

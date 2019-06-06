@@ -54,4 +54,10 @@ public class ProductController extends BaseController {
         productService.cancelAllocateInventory(reqs);
         return success();
     }
+
+    @RequestMapping(value = "/allocateInventory2",method = RequestMethod.POST)
+    public StandResponse allocateInventory(@RequestBody List<AllocateInventoryReq> reqs) throws BusinessException {
+        productService.allocateInventory(reqs);
+        return success();
+    }
 }

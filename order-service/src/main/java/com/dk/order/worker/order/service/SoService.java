@@ -29,7 +29,6 @@ public class SoService {
     @Autowired
     TransactionMapper transactionMapper;
 
-    @GlobalLock
     @Transactional(rollbackFor = Throwable.class)
     public List<Long> createSo(TccRequest<List<SoMaster>> soMasters) throws BusinessException {
         /**
@@ -56,6 +55,7 @@ public class SoService {
                         Long sysno = SnowflakeIdGenerator.getInstance().nextId();
                         soMaster.setSysNo(sysno);
                     }
+                    soMaster.setStatus(0);
                     soMasterMapper.insert(soMaster);
                     for (SoItem soItem : soMaster.getSoItems()) {
                         soItemMapper.insert(soItem);
@@ -67,7 +67,6 @@ public class SoService {
         return results;
     }
 
-    @GlobalLock
     @Transactional(rollbackFor = Throwable.class)
     public void updateSoStatusToCreateSuccess(TccRequest<List<Long>> sysnos){
         transactionMapper.updateBranchTransactionToCommitted(sysnos.getXid(),sysnos.getBranchId());
@@ -78,7 +77,6 @@ public class SoService {
         }
     }
 
-    @GlobalLock
     @Transactional(rollbackFor = Throwable.class)
     public void updateSoStatusToCreateFail(TccRequest<List<Long>> sysnos){
         /**
@@ -104,5 +102,27 @@ public class SoService {
                 soMasterMapper.updateSoStatusToCreateFail(sysno);
             }
         }
+    }
+
+    @Transactional(rollbackFor = Throwable.class)
+    public List<Long> createSo(List<SoMaster> soMasters) throws BusinessException {
+        List<Long> results = new ArrayList<>();
+        if (soMasters.size()>0) {
+            for (SoMaster soMaster : soMasters) {
+                if (soMaster.getSoItems()!=null&&soMaster.getSoItems().size()>0) {
+                    if (soMaster.getSysNo()==null) {
+                        Long sysno = SnowflakeIdGenerator.getInstance().nextId();
+                        soMaster.setSysNo(sysno);
+                    }
+                    soMaster.setStatus(10);
+                    soMasterMapper.insert(soMaster);
+                    for (SoItem soItem : soMaster.getSoItems()) {
+                        soItemMapper.insert(soItem);
+                    }
+                    results.add(soMaster.getSysNo());
+                }
+            }
+        }
+        return results;
     }
 }
