@@ -87,7 +87,6 @@ public class ProductService {
         }
     }
 
-    @Transactional(rollbackFor = Throwable.class)
     public void allocateInventory(List<AllocateInventoryReq> reqs) throws BusinessException {
         for (AllocateInventoryReq req : reqs) {
             int result = inventoryMapper.allocateInventory(req.getProductSysNo(),req.getQty());

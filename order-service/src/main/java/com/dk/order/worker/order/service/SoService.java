@@ -104,7 +104,6 @@ public class SoService {
         }
     }
 
-    @Transactional(rollbackFor = Throwable.class)
     public List<Long> createSo(List<SoMaster> soMasters) throws BusinessException {
         List<Long> results = new ArrayList<>();
         if (soMasters.size()>0) {
