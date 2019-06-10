@@ -18,18 +18,18 @@ public interface ProductSvc {
      * @author scott lewis
      * @date 2019/05/27
      **/
-    @RequestMapping(value ="/v1/product/load",method = RequestMethod.GET)
+    @RequestMapping(value ="/v1/Product/load",method = RequestMethod.GET)
     public StandResponse<Product> load(Long sysno);
 
-    @RequestMapping(value ="/v1/product/allocateInventory",method = RequestMethod.POST, headers = {"Seata-Transaction-Mode=TCC"})
+    @RequestMapping(value ="/v1/Product/allocateInventory",method = RequestMethod.POST, headers = {"Seata-Transaction-Mode=TCC"})
     public StandResponse allocateInventory(@RequestBody TccRequest<List<AllocateInventoryReq>> reqs);
 
-    @RequestMapping(value ="/v1/product/commitAllocateInventory",method = RequestMethod.POST, headers = {"Seata-Transaction-Mode=TCC"})
+    @RequestMapping(value ="/v1/Product/commitAllocateInventory",method = RequestMethod.POST, headers = {"Seata-Transaction-Mode=TCC"})
     public StandResponse commitAllocateInventory(@RequestBody TccRequest<List<AllocateInventoryReq>> reqs);
 
-    @RequestMapping(value ="/v1/product/cancelAllocateInventory",method = RequestMethod.POST, headers = {"Seata-Transaction-Mode=TCC"})
+    @RequestMapping(value ="/v1/Product/cancelAllocateInventory",method = RequestMethod.POST, headers = {"Seata-Transaction-Mode=TCC"})
     public StandResponse cancelAllocateInventory(@RequestBody TccRequest<List<AllocateInventoryReq>> reqs);
 
-    @RequestMapping(value ="/v1/product/allocateInventory2",method = RequestMethod.POST)
+    @RequestMapping(value ="/v1/Product/allocateInventory2",method = RequestMethod.POST)
     public StandResponse allocateInventory(@RequestBody List<AllocateInventoryReq> reqs);
 }

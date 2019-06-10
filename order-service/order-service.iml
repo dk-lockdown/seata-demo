@@ -174,18 +174,18 @@
     <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.44" level="project" />
-    <orderEntry type="library" name="Maven: io.seata:seata-spring:0.6.0" level="project" />
-    <orderEntry type="library" name="Maven: io.seata:seata-tm:0.6.0" level="project" />
-    <orderEntry type="library" name="Maven: io.seata:seata-core:0.6.0" level="project" />
-    <orderEntry type="library" name="Maven: io.seata:seata-common:0.6.0" level="project" />
-    <orderEntry type="library" name="Maven: io.seata:seata-discovery-core:0.6.0" level="project" />
-    <orderEntry type="library" name="Maven: io.seata:seata-config-core:0.6.0" level="project" />
+    <orderEntry type="library" name="Maven: io.seata:seata-spring:0.6.1" level="project" />
+    <orderEntry type="library" name="Maven: io.seata:seata-tm:0.6.1" level="project" />
+    <orderEntry type="library" name="Maven: io.seata:seata-core:0.6.1" level="project" />
+    <orderEntry type="library" name="Maven: io.seata:seata-common:0.6.1" level="project" />
+    <orderEntry type="library" name="Maven: io.seata:seata-discovery-core:0.6.1" level="project" />
+    <orderEntry type="library" name="Maven: io.seata:seata-config-core:0.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.typesafe:config:1.2.1" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-all:4.1.29.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.seata:seata-rm-datasource:0.6.0" level="project" />
+    <orderEntry type="library" name="Maven: io.seata:seata-rm-datasource:0.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.github.ben-manes.caffeine:caffeine:2.6.2" level="project" />
-    <orderEntry type="library" name="Maven: io.seata:seata-tcc:0.6.0" level="project" />
-    <orderEntry type="library" name="Maven: io.seata:seata-rm:0.6.0" level="project" />
+    <orderEntry type="library" name="Maven: io.seata:seata-tcc:0.6.1" level="project" />
+    <orderEntry type="library" name="Maven: io.seata:seata-rm:0.6.1" level="project" />
     <orderEntry type="library" name="Maven: cglib:cglib:3.1" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm:4.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.1.2.RELEASE" level="project" />
