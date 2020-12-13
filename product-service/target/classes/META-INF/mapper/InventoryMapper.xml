@@ -66,8 +66,8 @@
     </insert>
 
     <update id="allocateInventory">
-        update inventory
-        set available_qty = available_qty - #{qty},
+        update `seata_product`.`inventory`
+        set `available_qty` = `available_qty` - #{qty},
         allocated_qty = allocated_qty + #{qty}
         where product_sysno = #{productSysNo}
         and available_qty >= #{qty}

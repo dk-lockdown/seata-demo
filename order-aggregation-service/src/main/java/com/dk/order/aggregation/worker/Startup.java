@@ -1,7 +1,6 @@
 package com.dk.order.aggregation.worker;
 
 import com.dk.foundation.annotation.EnableEngineStart;
-import com.dk.foundation.engine.filter.SeataXidFilter;
 import io.seata.spring.annotation.GlobalTransactionScanner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cache.annotation.EnableCaching;
@@ -29,11 +28,6 @@ public class Startup {
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
-    }
-
-    @Bean
-    public SeataXidFilter seataXidFilter(){
-        return new SeataXidFilter();
     }
 
     @Bean

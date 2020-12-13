@@ -1,6 +1,7 @@
 package com.dk.order.aggregation.worker.order.service;
 
 import com.alibaba.fastjson.JSON;
+import com.dk.foundation.engine.baseentity.StandResponse;
 import com.dk.order.aggregation.worker.order.action.AllocateInventoryTccAction;
 import com.dk.order.aggregation.worker.order.action.CreateOrderTccAction;
 import com.dk.order.aggregation.worker.order.remote.order.OrderSvc;
@@ -93,8 +94,15 @@ public class OrderService {
         reqs.add(allocateInventoryReq);
 
         if(atMode) {
-            orderSvc.insert(soMasters);
-            productSvc.allocateInventory(reqs);
+            StandResponse result1 = orderSvc.insert(soMasters);
+            if (result1.getCode() != 200) {
+                throw new BusinessException(result1.getMsg());
+            }
+
+            StandResponse result2 = productSvc.allocateInventory(reqs);
+            if (result2.getCode() != 200) {
+                throw new BusinessException(result2.getMsg());
+            }
         }
         else {
             boolean result1 = createOrderTccAction.prepare(null, soMasters, JSON.toJSONString(soSysNos));
@@ -103,8 +111,6 @@ public class OrderService {
                 return soSysNos;
             }
         }
-        throw new BusinessException("下单失败");
+        return soSysNos;
     }
-
-
 }
